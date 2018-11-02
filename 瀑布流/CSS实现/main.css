@@ -1,0 +1,29 @@
+#main {
+  -webkit-column-width: 217px;
+  -moz-column-width: 217px;
+  -o-column-width: 217px;
+  column-width: 217px;
+  margin: 0 140px;
+
+  /* column-count: 5; */
+  column-gap: 5px;
+}
+
+.box {
+  /* JS offheight 只能不能获取 margin 所以用 padding */
+  padding: 15px 0 0 0;
+}
+
+.pic {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+  width: 180px;
+}
+
+.pic img {
+  display: block;
+  width: 180px;
+  height: auto;
+}
