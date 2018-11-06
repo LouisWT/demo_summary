@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Datepicker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="datepicker.js"></script>
+  <style>
+  .select-date {
+    border-radius: 5px;
+    height: 20px;
+    width: 240px;
+    border-color: #1abc9c;
+    margin: 0 auto;
+    padding: 0;
+  }
+  </style>
+</head>
+<body>
+  <!-- 组件开发时用长 class 名，防止复用冲突 -->
+  <!-- 使用时将 div 的 class 这样声明就好 -->
+  <input class="select-date"/>
+  <!-- <div class="ui-datepicker-wrapper"> -->
+    <!-- <div class="ui-datepicker-header">
+      <a href="#" class="ui-datepicker-btn ui-datepicker-prev-btn">&lt;</a>
+      <a href="#" class="ui-datepicker-btn ui-datepicker-next-btn">&gt;</a>
+      <span class="ui-datepicker-curr-month">2018-12</span>
+    </div>
+    <div class="ui-datepicker-body">
+      <table>
+        <thead>
+          <tr>
+            <th>日</th>
+            <th>一</th>
+            <th>二</th>
+            <th>三</th>
+            <th>四</th>
+            <th>五</th>
+            <th>六</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td month='11'>25</td>
+            <td month='11'>26</td>
+            <td month='11'>27</td>
+            <td month='11'>28</td>
+            <td month='11'>29</td>
+            <td month='11'>30</td>
+            <td month='12'>1</td>
+          </tr>
+          <tr>
+              <td month='12'>2</td>
+              <td month='12'>3</td>
+              <td month='12'>4</td>
+              <td month='12'>5</td>
+              <td month='12'>6</td>
+              <td month='12'>7</td>
+              <td month='12'>8</td>
+          </tr>
+          <tr>
+              <td month='12'>9</td>
+              <td month='12'>10</td>
+              <td month='12'>11</td>
+              <td month='12'>12</td>
+              <td month='12'>13</td>
+              <td month='12'>14</td>
+              <td month='12'>15</td>
+          </tr>
+          <tr>
+              <td month='12'>16</td>
+              <td month='12'>17</td>
+              <td month='12'>18</td>
+              <td month='12'>19</td>
+              <td month='12'>20</td>
+              <td month='12'>21</td>
+              <td month='12'>22</td>
+            </tr>
+            <tr>
+                <td month='12'>23</td>
+                <td month='12'>24</td>
+                <td month='12'>25</td>
+                <td month='12'>26</td>
+                <td month='12'>27</td>
+                <td month='12'>28</td>
+                <td month='12'>29</td>
+              </tr>
+              <tr>
+                <td month='12'>30</td>
+                <td month='12'>31</td>
+                <td month='1'>1</td>
+                <td month='1'>2</td>
+                <td month='1'>3</td>
+                <td month='1'>4</td>
+                <td month='1'>5</td>
+              </tr>
+        </tbody>
+      </table>
+    </div> -->
+  <!-- </div> -->
+  <script src="./main.js"></script>
+  <script>
+    datePicker.firstRenderUI('.select-date');
+  </script>
+</body>
+</html>

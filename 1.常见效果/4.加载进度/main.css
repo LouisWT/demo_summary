@@ -1,0 +1,92 @@
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.loading .pic {
+  background: url('./images/loading.gif') no-repeat center center;
+  width: 64px;
+  height: 64px;
+}
+
+.myloading {
+  width: 64px;
+  height: 64px;
+}
+
+.myloading i {
+  display: block;
+  float: left;
+  width: 6px;
+  height: 50px;
+  background-color: blue;
+  margin: 0 2px;
+
+  transform: scaleY(0.4);
+  animation: load 1.2s infinite;
+}
+.myloading i:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.myloading i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.myloading i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.myloading i:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.myloading i:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes load {
+  0%, 40%, 100% {
+    transform: scaleY(0.4)
+  }
+  20% {
+    transform: scaleY(1)
+  }
+}
+
+/* 在页面的不同位置插入 script 标签，改变 width */
+.loading-percent {
+  width: 10%;
+  height: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  z-index: 1000;
+}
+
+.loading .circle {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 3px black;
+  animation: rotate 2s linear 0s infinite;
+}
+
+.loading .progress {
+  position: absolute;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}

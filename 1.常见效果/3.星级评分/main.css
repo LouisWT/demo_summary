@@ -16,7 +16,8 @@ ul, li {
   cursor: pointer;
 }
 
-.fa-star{
+.fa-star {
+  /* font awesome 图标使用 font-size 改变大小 */
   font-size: 26px;
 }
 
