@@ -22,6 +22,7 @@ function partition(arr, lo, hi) {
 
   while(true) {
     // 直到找完或者找到比它大的元素
+    // 这块儿容易写成 if !!
     while (arr[++i] <= value) { if (i == hi) break; }
     // 直到找完或者找到比它小的元素
     while (arr[--j] >= value) { if (j == lo) break; }
@@ -55,5 +56,4 @@ function quickSort(arr) {
   sort(arr, 0, arr.length - 1);
 }
 
-quickSort(arr);
 console.log(arr);
