@@ -1,3 +1,6 @@
+// p148
+// 输入两棵二叉树，判断第二个树是否为第一棵树的子树
+
 function HasSubtree(pRoot1, pRoot2) {
     if (!pRoot1 || !pRoot2) return false;
     return checkSubtree(pRoot1, pRoot2);
