@@ -3,7 +3,7 @@
 
 function Convert(pRootOfTree) {
   if (!pRootOfTree) return null;
-  // 利用数组传递的是引用的特点来传递中序遍历的前一个节点
+  // ** 利用数组传递的是引用的特点来传递中序遍历的前一个节点
   let lastNode = [null];
   convertNode(pRootOfTree, lastNode);
   let firstNode = lastNode[0];
