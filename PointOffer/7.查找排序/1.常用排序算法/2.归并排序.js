@@ -16,7 +16,7 @@ function mergeSort(arr) {
 
 function sort(arr, lo, hi, temp) {
   if (hi <= lo) { return; }
-  const mid = lo + Math.floor((hi - lo) / 2);
+  const mid = Math.floor((hi + lo) / 2);
   sort(arr, lo, mid, temp);
   sort(arr, mid + 1, hi, temp);
   merge(arr, lo, mid, hi, temp);
