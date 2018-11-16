@@ -15,15 +15,9 @@ function compose(arr, init, count, all, temp) {
         return;
     }
     for (let i = init; i < arr.length; i++) {
-        // let p = arr[init];
-        // arr[init] = arr[i];
-        // arr[i] = p;
         temp.push(arr[i]);
         compose(arr, i + 1, count, all, temp);
         temp.pop();
-        // p = arr[init];
-        // arr[init] = arr[i];
-        // arr[i] = p;
     }
 }
 
