@@ -10,6 +10,7 @@ for(let i = 0; i < 1000; i++) {
 // 是稳定的排序算法
 function mergeSort(arr) {
   if (!arr) return;
+  // 辅助数组
   const temp = new Array(arr.length);
   sort(arr, 0, arr.length - 1, temp);
 }
@@ -17,8 +18,10 @@ function mergeSort(arr) {
 function sort(arr, lo, hi, temp) {
   if (hi <= lo) { return; }
   const mid = Math.floor((hi + lo) / 2);
+  // 划分
   sort(arr, lo, mid, temp);
   sort(arr, mid + 1, hi, temp);
+  // 归并
   merge(arr, lo, mid, hi, temp);
 }
 
