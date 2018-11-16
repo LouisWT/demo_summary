@@ -31,6 +31,7 @@ function eightHou(arr, init, all) {
     for (let k = 0; k < init; k++) {
       if (Math.abs(init - k) === Math.abs(arr[init] - arr[k])) {
         flag = true;
+        break;
       }
     }
     // 如果当前元素是在对角上的，就将元素位置调换回来，继续看后面的元素是否符合要求
@@ -54,7 +55,7 @@ function getNHou(N) {
     arr.push(i);
   }
   const all = [];
-  eightHou(arr, 0, all);
+  newEightHou(arr, 0, all);
   all.sort((a, b) => {
     if (Number(a) > Number(b)) return 1;
     else return -1;
@@ -62,3 +63,32 @@ function getNHou(N) {
   return all[N - 1];
 }
 
+
+// 优化下
+function newEightHou(arr, init, all) {
+  if (init === arr.length) {
+    all.push(arr.join(''));
+    return;
+  }
+  for (let i = init; i < arr.length; i++) {
+    // 判断是否与之前的元素成对角关系
+    let flag = false;
+    for (let k = 0; k < init; k++) {
+      if (Math.abs(init - k) === Math.abs(arr[i] - arr[k])) {
+        flag = true;
+        break;
+      }
+    }
+    // 如果当前元素是在对角上的，就将元素位置调换回来，继续看后面的元素是否符合要求
+    if (flag) {
+      continue;
+    }
+    let p = arr[init];
+    arr[init] = arr[i];
+    arr[i] = p;
+    eightHou(arr, init + 1, all);
+    p = arr[init];
+    arr[init] = arr[i];
+    arr[i] = p;
+  }
+}
