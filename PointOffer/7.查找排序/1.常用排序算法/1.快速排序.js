@@ -40,7 +40,7 @@ function swap(arr, i, j) {
 }
 
 function sort(arr, lo, hi) {
-  // 将这里变成大于等于
+  // ** 将这里变成大于等于
   if (lo >= hi) {
     return;
   }
@@ -56,4 +56,5 @@ function quickSort(arr) {
   sort(arr, 0, arr.length - 1);
 }
 
+quickSort(arr);
 console.log(arr);
