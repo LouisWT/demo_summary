@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>table 表格布局</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        .main {
+            width: 800px;
+            height: 200px;
+            border-collapse: collapse;
+        }
+        .left {
+            background-color: blue;
+        }
+        .right {
+            background-color: red;
+        }
+        .table {
+            display: table;
+            width: 800px;
+            height: 200px;
+        }
+        .table-row {
+            display: table-row;
+        }
+        .table-cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <table class="main">
+        <tr>
+            <td class="left">左</td>
+            <td class="right">右</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="table">
+        <div class="table-row">
+            <div class="left table-cell">左</div>
+            <div class="right table-cell">右</div>
+        </div>
+    </div>
+</body>
+</html>
