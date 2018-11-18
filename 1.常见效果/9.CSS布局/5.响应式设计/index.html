@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>响应式设计之小屏幕隐藏边栏</title>
+    <!-- 1. 加入 viewport 否则可能在小屏幕上网页显示的很小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            display: flex;
+             /* 2. 父容器不能设为固定宽度了 */
+            max-width: 800px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .left {
+            width: 200px;
+            background-color: goldenrod;
+        }
+
+        .right {
+            flex: 1;
+            background-color: red; 
+        }
+        /* 3. 屏幕小于 640 px 的就不现实左边栏了         */
+        @media (max-width: 640px) {
+            .left {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">不重要的内容，可能是广告链接啥的</div>
+        <div class="right">重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。重要内容，可能是文章什么的。</div>
+    </div>
+</body>
+</html>

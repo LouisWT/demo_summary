@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>响应式设计之使用rem成比例缩放</title>
+    <!-- 1. 加入 viewport 否则可能在小屏幕上网页显示的很小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* 2. 1rem 就相当于 html 元素的font-size 的像素数，这里就是 1rem = 20px */
+        html {
+            font-size: 20px;
+        }
+
+        /* 4. 先针对大屏进行适配 */
+        @media (max-width: 376px) {
+            html {
+                font-size: 24px;
+            }
+        }
+
+        /* 5. 再根据小屏进行适配 */
+        @media (max-width: 320px) {
+            html {
+                font-size: 20px;
+            }
+        }
+
+        .container {
+            margin: 0 auto;
+            /* 2. 父容器不能设为固定宽度了 */
+            max-width: 45.5rem;
+            font-size: 0;
+            border: 1px solid black;
+        }
+
+        .intro {
+            display: inline-block;
+            font-size: 1rem;
+            width: 9rem;
+            line-height: 9rem;
+            border: 1px solid black;
+            border-radius: 4.5rem;
+            text-align: center;
+        }
+
+        /* 3. 加入媒体查询 */
+        @media (max-width: 640px) {
+            .intro {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro">介绍一</div>
+        <div class="intro">介绍二</div>
+        <div class="intro">介绍三</div>
+        <div class="intro">介绍四</div>
+        <div class="intro">介绍五</div>
+    </div>
+</body>
+
+</html>
