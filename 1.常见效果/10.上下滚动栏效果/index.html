@@ -5,88 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>上下滚动栏效果</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
     <script src="main.js"></script>
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        overflow: hidden; 
-    }
-
-    .wrapper {
-        height: 100%;
-        overflow: hidden;
-        font-family: helvetica, Arial, "Hiragino Sans GB","Microsoft YaHei", simsun;
-        font-size: 14px;
-        line-height: 1.2;
-        color: #595959;
-    }
-    .carousel-btns {
-        position: fixed;
-        height: 100%;
-        width: 50px;
-        left: 0;
-        top: 0;
-        z-index: 2;
-    }
-    .carousel-btns ul {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        list-style-type: none;
-        -webkit-transform: translate(-50%,-50%);
-        -moz-transform: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-        transform: translate(-50%,-50%);
-    }
-    .carousel-btns li {
-        margin: 10px 0;
-        height: 10px;
-        width: 10px;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        background-color: #d2d4d6;
-        cursor: pointer;
-    }
-
-    .carousel-btns li.active {
-        border: 4px solid #f95e58;
-        background-color: #fff;
-        -webkit-transform: translateX(-4px);
-        -moz-transform: translateX(-4px);
-        -ms-transform: translateX(-4px);
-        transform: translateX(-4px);
-    }
-
-    .carousel, .page {
-        position: relative;
-        overflow: hidden;    
-    }
-
-    .page-1 {
-        background-color: blue;
-    }
-
-    .page0 {
-        background-color: yellow;
-    }
-
-    .page1 {
-        background-color: red;
-    }
-
-    .page2 {
-        background-color: green;
-    }
-
-    .page3 {
-        background-color: orange;
-    }
-    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -102,7 +22,19 @@
             </ul>
         </div>
         <div class="carousel">
-            <div class="page page-1"></div>
+            <div class="page page-1">
+              <img src="images/ea78d840bb74c827ebf43d22d15c9341.jpeg" alt="" class="bg">
+              <img src="images/d56a47fde1e1d35095f7d565c8e7ab04.png" alt="" class="bg2">
+              <img src="images/logoleft.png" alt="" class="logoleft">
+              <img src="images/logoright.png" alt="" class="logoright">
+              <div class="standard-content">
+                <img src="images/7629edcc978b1ae6c536e338ddb00677.png" alt="" class="i1">
+                <img src="images/a984e61da647e819e09b9d71943c4e06.png" alt="" class="i4">
+                <img src="images/login.png" alt="" class="i3">
+                <img src="images/signup.png" alt="" class="i2">
+                <img src="images/arrow.png" alt="" class="arrow">
+              </div>
+            </div>
             <div class="page page0"></div>
             <div class="page page1"></div>
             <div class="page page2"></div>
