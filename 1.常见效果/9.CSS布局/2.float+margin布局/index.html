@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>float 元素</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            width: 200px;
+            margin-top: 10px;
+            background-color: palevioletred;
+            /* overflow: hidden; */
+        }
+        /* 很关键，使用这个伪元素清除浮动，从而让浮动元素能撑起父容器 */
+        .container2::after {
+            content: "a";
+            clear: both;
+            display: block;
+            height: 0;
+            visibility: hidden;
+        }
+
+        .main {
+            background-color: red;
+            width: 200px;
+        }
+        .float {
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: blue; 
+        }
+
+        .left {
+            float: left;
+            width: 100px;
+            height: 50px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 脱离文档流不脱离文本流 -->
+    <span class="float">float</span>
+    <div class="main">仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗仔细擦拭的风格不那么南海地区看看吗</div>
+    <hr>
+    <!-- 如果有位置，尽量靠上，尽量靠左 -->
+    <div class="container container2">
+        <div class="left">float</div>
+        <span>几个字</span>
+        <div class="left">float</div>
+    </div>
+    <!--  -->
+    <div class="container" style="height:50px;"></div>
+</body>
+</html>
