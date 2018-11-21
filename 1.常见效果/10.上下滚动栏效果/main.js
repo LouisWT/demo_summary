@@ -22,7 +22,7 @@ function onMouseWheel(down) {
     carousel.style.transition = 'transform 0.8s ease 0s, -webkit-transform 0.8s ease 0s, -moz-transform 0.8s ease 0s';
     carousel.style.transform = `translateY(-${(pressIndex + 1) * height}px)`;
     const header = document.getElementsByClassName('header')[0];
-    if (pressIndex == -1) {
+    if (pressIndex == -1 || pressIndex == 4) {
         header.classList.remove('showheader');
     } else {
         header.classList.add('showheader');
@@ -63,7 +63,7 @@ window.onload = function () {
             pressBtn.classList.add('active');
             // 出了第一个轮播页，都显示 header
             const header = document.getElementsByClassName('header')[0];
-            if (pressIndex == -1) {
+            if (pressIndex == -1 || pressIndex == 4) {
                 header.classList.remove('showheader');
             } else {
                 header.classList.add('showheader');
