@@ -154,7 +154,7 @@ body {
   margin: 0 auto;
 }
 
-.page>.standard-content * {
+.page .standard-content * {
   opacity: 1;
   transform: translate(0);
   position: absolute;
