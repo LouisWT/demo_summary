@@ -26,6 +26,7 @@ function partition(arr, lo, hi) {
     while (arr[++i] <= value) { if (i == hi) break; }
     // 直到找完或者找到比它小的元素
     while (arr[--j] >= value) { if (j == lo) break; }
+    // 这里一定要是大于等于
     if (i >= j) break;
     swap(arr, i, j);
   }
