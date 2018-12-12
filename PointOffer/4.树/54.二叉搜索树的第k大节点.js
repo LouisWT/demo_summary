@@ -56,6 +56,7 @@ findKNumber(root, 3);
 
 function newFindNumber(root, k) {
   if (!root || k < 1) return null;
+  // 传递引用而不是值，保证改动 k 后在之后的递归中可以体现出来
   let hk = { k };
   return newMiddleSearch(root, hk);
 }
