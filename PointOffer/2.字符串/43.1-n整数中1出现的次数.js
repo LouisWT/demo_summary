@@ -33,7 +33,7 @@ function count1(arr) {
     }
     sum += Math.pow(10, temp.length);
   }
-  // 除去最高位，剩下位是 1 的情况
+  // 最高位存在时，剩下位是 1 的情况
   sum += top[0] * temp.length * Math.pow(10, temp.length - 1)
   // 除去最高位后 1 出现的次数
   if (temp.length >= 1) {
