@@ -86,7 +86,7 @@ function newEightHou(arr, init, all) {
     let p = arr[init];
     arr[init] = arr[i];
     arr[i] = p;
-    eightHou(arr, init + 1, all);
+    newEightHou(arr, init + 1, all);
     p = arr[init];
     arr[init] = arr[i];
     arr[i] = p;
