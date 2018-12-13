@@ -1,4 +1,4 @@
-// p294
+// p294 **
 // n个骰子，所有骰子朝上一面的点数之和为s，求s所有可能的值的概率
 
 function getProbability(n) {
