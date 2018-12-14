@@ -16,9 +16,12 @@ obj.foo = 'quux';
 // 静默地不做任何事
 obj.quaxxor = 'the friendly duck';
 
+// { prop: [Function: prop], foo: 'bar' }
 console.log(obj);
 
+// TypeError, Cannot define property ohai
 Object.defineProperty(obj, 'ohai', { value: 17 });
 
+// TypeError: #<Object> is not extensible
 Object.setPrototypeOf(obj, { x: 20 });
 
