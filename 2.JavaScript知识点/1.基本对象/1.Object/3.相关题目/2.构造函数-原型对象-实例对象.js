@@ -15,6 +15,16 @@ console.log(Foo.constructor.prototype === Function.prototype);
 // 1.1 函数 prototype 对象上的 constructor 指向这个函数
 // true
 console.log(Foo.prototype.constructor === Foo);
+var o = {};
+console.log(o.__proto__.constructor === Object); // true
+o = new Object;
+console.log(o.__proto__.constructor === Object); // true
+a = [];
+console.log(a.__proto__.constructor === Array); // true
+a = new Array;
+console.log(a.__proto__.constructor === Array) // true
+var n = new Number(3);
+console.log(n.__proto__.constructor === Number); // true
 
 // 2. 实例对象
 const foo = new Foo(1)
