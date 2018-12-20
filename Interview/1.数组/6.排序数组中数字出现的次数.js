@@ -1,4 +1,5 @@
 // p193 在排序数组中找出给定数字出现的次数
+// 剑指 offer 查找排序类中有
 
 function getNum(arr, k) {
   if (!arr || k === undefined) return 0;

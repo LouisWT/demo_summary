@@ -1,6 +1,7 @@
 // p195
 // 计算两个有序整型数组的交集
 
+// 两个数组都从头遍历，如果相等，那就加入交集，如果不能，小的一方索引+1
 function findSame(arr1, arr2) {
   if (!arr1 || !arr2) return [];
   let index1 = 0;
