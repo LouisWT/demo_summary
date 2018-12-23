@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <style>
+    .hide {
+      display: none !important;
+    }
+
+    .pagination {
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    .pagination li {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      line-height: 30px;
+      margin: 0 5px 0 0;
+      font-size: 14px;
+      text-align: center;
+      border: 1px solid #00bc9b;
+      color: #00bc9b;
+      cursor: pointer;
+    }
+
+    .pagination li.current,
+    .pagination li:hover {
+      background: #00bc9b;
+      color: #ffffff;
+    }
+
+    .demo {
+      margin: 10px 0;
+      padding: 10px;
+      background: #eeeeee;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="pagination" id="jsPagination">
+    <li>首页</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>末页</li>
+  </ul>
+
+  <script>
+    function pagination2(total, current) {
+      var wrapper = document.getElementById('jsPagination'),
+        liList = wrapper.children;
+      if (total == 0) { //demo2
+        wrapper.className = 'hide';
+      } else if (total <= 5) { //demo3 首页末页都没有
+        liList[0].className = 'hide';
+        liList[6].className = 'hide';
+        for (var i = 1; i <= 5; i++) {
+          liList[i].innerHTML = i;
+          if (i == current) {
+            liList[i].className = 'current';
+          }
+          if (i > total) {
+            liList[i].className = 'hide';
+          }
+        }
+      } else { //total>5
+        if (current <= 3) { //这时没有首页 只有尾页 demo4
+          liList[0].className = 'hide';
+          for (var i = 1; i <= 5; i++) {
+            liList[i].innerHTML = i;
+            if (i == current) {
+              liList[i].className = 'current';
+            }
+          }
+        } else {//这时有首页
+          if (current + 2 >= total) {//没有末页  demo5
+            liList[6].className = 'hide';
+            for (var i = 5; i > 0; i--) {
+              liList[i].innerHTML = total;
+              if (total == current) {
+                liList[i].className = 'current';
+              }
+              total--;
+            }
+          } else {//也有末页 demo1
+            var start = current - 2;
+            for (var i = 1; i <= 5; i++) {
+              liList[i].innerHTML = start;
+              if (start == current) {
+                liList[i].className = 'current';
+              }
+              start++;
+            }
+          }
+        }
+      }
+    }
+
+  </script>
+  <script>
+    window.onload = function () {
+      function pagination(total, current) {
+        var container = document.getElementById('jsPagination')
+        var list = container.children;
+        var length = list.length;
+        // total 为 0 隐藏整个元素
+        if (total == 0) {
+          container.className = 'hide';
+        }
+        // 如果小于5，则隐藏首页和末页元素
+        else if (total <= 5) {
+          list[0].className = 'hide';
+          list[length - 1].className = 'hide';
+          for (var i = 1; i <= length - 2; i++) {
+            list[i].innerHTML = i;
+            if (i === current) {
+              list[i].className = 'current';
+            }
+            if (i > total) {
+              list[i].className = 'hide';
+            }
+          }
+        }
+        // 当 current 居中不足5页，向后补足5页，隐藏首页按钮
+        else if (current <= 3) {
+          list[0].className = 'hide';
+          for (var i = 1; i <= length - 2; i++) {
+            list[i].innerHTML = i;
+            if (i === current) {
+              list[i].className = 'current';
+            }
+          }
+        }
+        // 当居中不足 5页，向前补足5页，隐藏末页
+        else if (total - current <= 2) {
+          list[length - 1].className = 'hide';
+          for (var i = 1; i <= length - 2; i++) {
+            list[i].innerHTML = total - 5 + i;
+            if (total - 5 + i === current) {
+              list[i].className = 'current';
+            }
+          }
+        }
+        else {
+          // 正常情况下 total > 5 并且 current 不会显示不足
+          for (var i = 1; i <= length - 2; i++) {
+            list[i].innerHTML = current - 3 + i;
+            if (i === 3) {
+              list[i].className = 'current';
+            }
+          }
+        }
+      }
+      pagination(5, 2)
+    }
+
+  </script>
+</body>
+
+</html>
