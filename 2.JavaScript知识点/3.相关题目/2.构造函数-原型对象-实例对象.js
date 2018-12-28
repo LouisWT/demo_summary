@@ -19,7 +19,7 @@ var o = {};
 console.log(o.__proto__.constructor === Object); // true
 o = new Object;
 console.log(o.__proto__.constructor === Object); // true
-a = [];
+let a = [];
 console.log(a.__proto__.constructor === Array); // true
 a = new Array;
 console.log(a.__proto__.constructor === Array) // true
