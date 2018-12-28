@@ -2,6 +2,7 @@
 // 交换操作次数在 0 ~ n-1之间
 // 比较操作次数为 n(n-1) / 2
 
+// 原理: 每次从剩下的数中选择最小的一个放在剩下数的最前面
 function selectSort(arr) {
   if (!arr) return;
   for(let i = 0; i < arr.length - 1; i++) {
