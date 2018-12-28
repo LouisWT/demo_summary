@@ -4,6 +4,7 @@ module.exports = MyPromise;
 // 1. Promise 状态穿透
 // 2. 不同 Promise 实现兼容
 // 3. 回调函数异步调用
+// 4. 异步回调函数不同会让 Promise 有不同的性能，可以 node 端首选 process.nextTick, 移动端可以使用 setTimeout
 
 function MyPromise(executor) {
   // 很关键，不然setTimeout的调用 this丢失，得不到想要的结果
