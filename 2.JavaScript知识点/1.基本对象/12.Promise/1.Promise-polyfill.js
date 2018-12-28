@@ -6,34 +6,36 @@ module.exports = MyPromise;
 // 3. 回调函数异步调用
 
 function MyPromise(executor) {
-  this.status = 'pending';
-  this.data = undefined;
-  this.onResolvedCallback = [];
-  this.onRejectedCallback = [];
+  // 很关键，不然setTimeout的调用 this丢失，得不到想要的结果
+  const self = this;
+  self.status = 'pending';
+  self.data = undefined;
+  self.onResolvedCallback = [];
+  self.onRejectedCallback = [];
 
   function resolve(value) {
     if (value instanceof MyPromise) {
       return value.then(resolve, reject);
     }
     // 异步调用分片
-    setTimeout(() => {
-      if (this.status === 'pending') {
-        this.status = 'resolved';
-        this.data = value;
-        for (let callback of this.onResolvedCallback) {
-          callback(value);
+    setTimeout(function() {
+      if (self.status === 'pending') {
+        self.status = 'resolved';
+        self.data = value;
+        for (let callback of self.onResolvedCallback) {
+          callback.call(self, value);
         }
       }
     })
   }
 
   function reject(reason) {
-    setTimeout(() => {
-      if (this.status === 'pending') {
-        this.status = 'rejected';
-        this.data = reason;
-        for (let callback of this.onRejectedCallback) {
-          callback(reason);
+    setTimeout(function() {
+      if (self.status === 'pending') {
+        self.status = 'rejected';
+        self.data = reason;
+        for (let callback of self.onRejectedCallback) {
+          callback.call(self, reason);
         }
       }
     })
