@@ -24,7 +24,7 @@ function search(node, stack) {
     if (stack.lengh > 0) {
       node = stack.pop();
       console.log(node.val);
-      // TODO
+      node = node.right;
     }
   }
 }
