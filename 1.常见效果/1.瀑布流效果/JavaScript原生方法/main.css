@@ -3,6 +3,21 @@
   position: relative;
 }
 
+/* #main::after {
+  content:'';
+  display: table;
+  clear: both
+} */
+
+/* @supports(display:flow-root) {
+  #main{ 
+    display: flow-root; 
+  } 
+  #main::after{ 
+    content:none; 
+  } 
+} */
+
 .box {
   /* JS offheight 只能不能获取 margin 所以用 padding */
   padding: 15px 0 0 15px;

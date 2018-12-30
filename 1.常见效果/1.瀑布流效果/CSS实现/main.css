@@ -10,7 +10,7 @@
 }
 
 .box {
-  /* JS offheight 只能不能获取 margin 所以用 padding */
+  /* JS offheight 不能获取 margin 所以用 padding */
   padding: 15px 0 0 0;
 }
 
