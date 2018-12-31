@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #wrapper {
+      height: 200px;
+      width: 200px;
+      border: 1px solid #eee;
+      overflow: hidden;
+    }
+
+    #wrapper ul {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    #wrapper li {
+      list-style: none;
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      top: 0;
+    }
+
+    #wrapper img {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <ul>
+      <!-- 用作补帧用 -->
+      <li><img src="images/P_03.jpg" alt=""></li>
+      <li><img src="images/P_00.jpg" alt=""></li>
+      <li><img src="images/P_01.jpg" alt=""></li>
+      <li><img src="images/P_02.jpg" alt=""></li>
+      <li><img src="images/P_03.jpg" alt=""></li>
+      <!-- 用作补帧用   -->
+      <li><img src="images/P_00.jpg" alt=""></li>
+    </ul>
+  </div>
+  <script>
+    let index = 0;
+    let timer;
+    let scrollTimer;
+    let aniTimer;
+    window.onload = function () {
+      let wp = document.getElementById('wrapper');
+      let imgs = wp.children[0].children;
+      let ulStart = -200;
+      for (let i = 0; i < imgs.length; i++) {
+        imgs[i].style.left = `${ulStart + 200 * i}px`;
+      }
+      scrollTimer = setInterval(function () {
+        index += 1;
+        animation(true);
+      }, 3000)
+      scrollImg('wrapper')
+    }
+    function scrollImg(wpname, boxname) {
+      let wp = document.getElementById(wpname);
+      let startX = 0;
+      let ul = wp.children[0];
+      wp.addEventListener('touchend', function() {
+        scrollTimer = setInterval(function () {
+          index += 1;
+          animation(true);
+        }, 3000)
+      })
+      wp.addEventListener('touchstart', (e) => {
+        clearTimeout(scrollTimer);
+        startX = e.changedTouches[0].clientX;
+      })
+      wp.addEventListener('touchmove', (e) => {
+        let endX = e.changedTouches[0].clientX;
+        let minus = endX - startX;
+        if (Math.abs(minus) < 50 || aniTimer) {
+          return;
+        }
+        if (aniTimer) {
+          return;
+        }
+        if (timer) {
+          return;
+        }
+        timer = setTimeout(function () {
+          if (minus < 0) {
+            index += 1;
+            animation(true);
+          } else {
+            index -= 1;
+            animation(false);
+          }
+          timer = undefined;
+        }, 200)
+      })
+    }
+
+    function animation(right) {
+      if (aniTimer) return;
+      let wp = document.getElementById('wrapper');
+      let ul = wp.children[0];
+      let pre;
+      let now;
+      let path;
+      if (right) {
+        pre = index - 1;
+        now = index;
+        path = -10;
+      } else {
+        pre = index + 1;
+        now = index;
+        path = 10;
+      }
+      let posSta = -pre * 200;
+      let posEnd = -now * 200;
+      function move() {
+        posSta += path;
+        if ((right && posSta < posEnd) || (!right && posSta > posEnd)) {
+          clearTimeout(aniTimer);
+          aniTimer = undefined;
+          if (index > 3) {
+            // 如果到了最后一张，重置index
+            index = 0;
+            ul.style.transform = `translateX(0px)`;
+          } else if (index < 0) {
+            // 如果到了第一张，重置index
+            index = 3;
+            ul.style.transform = `translateX(-600px)`;
+          }
+          return;
+        }
+        ul.style.transform = `translateX(${posSta}px)`;
+        clearTimeout(aniTimer);
+        aniTimer = setTimeout(move, 10);
+      }
+      aniTimer = setTimeout(move, 10)
+    }
+  </script>
+</body>
+</html>
