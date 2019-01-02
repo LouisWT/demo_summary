@@ -101,7 +101,7 @@ var Child = (function (_Parent) {
         }
       }
     ]);
-
+    // 7. 继承父类属性
     var _this = _possibleConstructorReturn(
       this,
       (Child.__proto__ || Object.getPrototypeOf(Child)).call(this, a)
