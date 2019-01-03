@@ -16,7 +16,6 @@ window.onload = function() {
         subContent.classList.remove('none');
         return;
       }
-
       if (timer) {
         clearTimeout(timer);
       }
@@ -25,13 +24,15 @@ window.onload = function() {
         if (mouseInSub) {
           return;
         }
+        const sub = document.getElementById('sub');
+        sub.classList.remove('none');
         const prevContent = document.getElementById(activeIndex);
         prevContent.classList.add('none');
 
         activeIndex = event.srcElement.dataset.id;
         const subContent = document.getElementById(activeIndex);
         subContent.classList.remove('none');
-        timer = null;
+        timer = undefined;
       }, 300);
     });
   }
