@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>视差滚动</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .article {
+      width: 960px;
+      height: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      /* background-attachment: scroll; */
+      background-position: center center;
+      background-size: cover;
+    }
+    .section1 {
+      background-image: url(http://www.alloyteam.com/wp-content/uploads/2014/01/section01.jpg);
+    }
+    .section2 {
+      background-image: url(http://www.alloyteam.com/wp-content/uploads/2014/01/section02.jpg);
+    }
+    .section3 {
+      background-image: url(http://www.alloyteam.com/wp-content/uploads/2014/01/section03.jpg);
+    }
+  </style>
+</head>
+<body>
+  <div class="article section1"></div>
+  <div class="article section2"></div>
+  <div class="article section3"></div>
+</body>
+</html>
