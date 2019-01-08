@@ -1,5 +1,3 @@
-import { listenerCount } from "cluster";
-
 // 字典类
 function Dictionary() {
   let items = {};
