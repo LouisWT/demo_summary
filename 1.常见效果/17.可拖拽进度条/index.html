@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>可拖拽进度条</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #progress {
+      margin: 0 auto;
+      width: 300px;
+      height: 4px;
+      border-radius: 4px;
+      background-color: #edca13;
+    }
+
+    #currentProgress {
+      width: 0px;
+      height: 4px;
+      border-radius: 4px;
+      background-color: #124f5a;
+    }
+
+    #progressBtn {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #0a6ebd;
+      position: relative;
+      top: -3px;
+      display: block;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress">
+    <div id="currentProgress">
+      <span id="progressBtn"></span>
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      let btn = document.getElementById('progressBtn');
+      let current = document.getElementById('currentProgress');
+      let progress = document.getElementById('progress')
+      let tag = false;
+      let ox = 0;
+      let left = 0;
+      let init = left;
+      document.addEventListener('mousedown', function (e) {
+        // pageX 是指针相对于整个文档的坐标
+        // pageX - left 是起始点
+        if (e.target === btn) {
+          ox = e.pageX;
+          init = left;
+          tag = true;
+        }
+      })
+      document.addEventListener('mousemove', function (e) {
+        if (tag) {
+          // 相对移动的距离
+          left = e.pageX - ox + init;
+          if (left <= 0) {
+            left = 0;
+          } else if (left >= 300) {
+            left = 300;
+          }
+          current.style.width = left + 'px';
+        }
+      })
+      document.addEventListener('mouseup', function(e) {
+        tag = false;
+      });
+      progress.addEventListener('click', (e) => {
+        if (e.target === btn) return;
+        let x = e.offsetX;
+        current.style.width = x + 'px';
+        left = x;
+        init = left;
+      })
+    }
+  </script>
+</body>
+</html>
