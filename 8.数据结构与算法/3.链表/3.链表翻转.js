@@ -13,28 +13,44 @@ let head = list.getHead();
 // 翻转链表
 function shiftLinkedList(head, m) {
   if (!head || m < 0) return null;
-  let curr;
-  [head, curr] = reverse(head, m);
-  curr.next = reverse(curr.next);
-}
-
-function reverse(head, m) {
-  let prev = head;
-  let curr = head.next;
-  if (m) {
-    let count = 1;
-    while (count < m) {
-      let temp = curr.next;
-      prev.next = temp;
-      curr.next = prev;
-      prev = curr;
-      curr = temp;
-      count++;
-    }
-    return [prev, curr];
+  let head1 = head;
+  let temp = head;
+  let count = 1;
+  while (count < m) {
+    temp = temp.next;
+    count++;
   }
+  let head2 = temp.next;
+  temp.next = null;
+  head1 = reverse(head1);
+  head2 = reverse(head2);
+  let curr = head1;
+  while (curr.next) {
+    curr = curr.next;
+  }
+  curr.next = head2;
+  return head1;
 }
 
-head = reverse(head, 2);
+// 反转链表
+function reverse(node) {
+  if (!node) return null;
+  // 1.如果是最后一个节点，直接返回
+  if (!node.next) return node;
+  // 2.将当前节点之后的节点，全部反转
+  let temp = reverse(node.next);
+  // 3.找到反转节点的最后一个节点
+  let endOfTemp = temp;
+  while (endOfTemp.next) {
+    endOfTemp = endOfTemp.next;
+  }
+  // 4.将当前节点放到最后一个节点后面
+  node.next = null;
+  endOfTemp.next = node;
+  // 5. 将反转后的链表的首节点返回
+  return temp;
+}
+
+head = shiftLinkedList(head, 2);
 
 console.log(head);
