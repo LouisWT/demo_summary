@@ -100,3 +100,5 @@ function LinkedList() {
     return head;
   }
 }
+
+module.exports = LinkedList;
