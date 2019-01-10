@@ -39,16 +39,16 @@ function maxSub(str, i, length) {
   return str1.length > str2.length ? str1 : str2;
 }
 
-// const readline = require('readline')
+const readline = require('readline')
 
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout
-// });
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-// rl.on('line', (line) => {
-//   console.log(findMaxSubStr2(line));
-// })
+rl.on('line', (line) => {
+  console.log(findMaxSubStr2(line));
+})
 
 // 2. Manacher 算法
 // 2.1 将所有可能的奇数，偶数长度回文子串都转换成奇数长度: 在每个字符串中每个字符的两边都插入一个特殊符号，比如 #，
@@ -61,39 +61,43 @@ function findMaxSubStr2(str) {
   str = str.split('').join('#');
   // 已知信息
   let max = new Array(str.length);
-  // 当前右边界的中心的索引
-  let center;
-  // 右边界
-  let right;
-  // 初始化
   max[0] = 1;
-  center = 0;
-  right = 0;
+  // 当前右边界的中心的索引
+  let center = 0;
+  // 右边界的索引
+  let right = 0;
   let maxStr = '';
   for (let i = 1; i < str.length; i++) {
+    // 搜索范围
     let length = Math.min(i + 1, str.length - i);
+    // 最长子串
     let temp;
     // 如果当前字符不在右边界内，直接拓展
     if (i >= right) {
-      temp = maxSub2(str, i, length);
+      temp = maxSub2(str, i, length, 1);
     } else {
+      // i 相对于 center 的对称位置
       let position = center - (i - center)
+      // 从已知信息中得到的最长字串大小
       let start = max[position];
       // 如果在范围内，就不用再判断了
-      // if (i + start - 1 < right) {
-      //   max[i] = start;
-      //   continue;
-      // }
+      if (i + start - 1 < right) {
+        max[i] = start;
+        continue;
+      }
       temp = maxSub2(str, i, length, start);
     }
+    // 以当前 i 为中心的回文子串到达的最右索引
     let tempRight = i + (temp.length - 1) / 2;
     max[i] = (temp.length - 1) / 2 + 1;
-    if (tempRight > right) {
-      center = i;
-      right = tempRight;
-    }
+    // 如果比当前的最长子串还长，更新
     if (temp.length > maxStr.length) {
       maxStr = temp;
+      // 更新中心和最右索引
+      if (tempRight > right) {
+        center = i;
+        right = tempRight;
+      }
     }
   }
   maxStr = maxStr.split('#').join('')
@@ -106,7 +110,10 @@ function findMaxSubStr2(str) {
 function maxSub2(str, i, length, start) {
   let str1 = str[i];
   // 以i 为中心的最长回文子串
-  start = start || 1
+  start = start > length ? length : start;
+  for (let j = 1; j < start; j++) {
+    str1 = str[i - j] + str1 + str[i + j];
+  }
   for (let j = start; j < length; j++) {
     if (str[i - j] == str[i + j]) {
       str1 = str[i - j] + str1 + str[i + j];
@@ -117,4 +124,4 @@ function maxSub2(str, i, length, start) {
   return str1;
 }
 
-findMaxSubStr2('111111111')
+// console.log(findMaxSubStr2('0010120123012340123450123456012345670123456780123456789'));
