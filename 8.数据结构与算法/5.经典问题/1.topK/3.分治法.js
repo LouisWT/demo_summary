@@ -41,6 +41,8 @@ function swap(arr, i, j) {
   arr[j] = temp;
 }
 
+// 如果要修改为 minK，只需要反转 line 29 30 的大小判断
+
 /**
  * 测试代码
  */

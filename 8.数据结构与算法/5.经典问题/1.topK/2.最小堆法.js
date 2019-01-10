@@ -66,6 +66,8 @@ function insert(arr, k, N) {
   }
 }
 
+// 如果要修改为 minK，只需要反转 line 9 37 38 61 63 的大小判断
+
 /**
  * 测试代码
  */
