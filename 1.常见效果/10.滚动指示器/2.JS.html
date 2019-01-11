@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>JS 实现滚动指示器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 100%;
+      height: 3000px;
+      overflow: auto;
+    }
+    #scroll-line {
+      height: 5px;
+      width: 0px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="scroll-line"></div>
+  <script>
+    window.onload = function () {
+      let line = document.getElementById('scroll-line');
+      let root = document.documentElement
+      window.addEventListener('scroll', () => {
+        let totalHeight = root.scrollHeight;
+        let windowHeight = window.innerHeight;
+        let scroll = root.scrollTop;
+        let radio = scroll / (totalHeight - windowHeight);
+        line.style.width = window.innerWidth * radio + 'px';
+      });
+    }
+  </script>
+</body>
+</html>

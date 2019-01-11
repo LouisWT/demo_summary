@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CSS 实现滚动指示器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      height: 3000px;
+      width: 100%;
+      /* 表示从左下角到右上角的线性渐变 */
+      /* 50% 表示渐变的 */
+      /* 这个设置完之后，相当于 body 就是以对角线为划分，一半蓝，一半白 */
+      /* 随着人滚动，蓝的区域就越来越大 */
+      background: linear-gradient(to right top, #0089f2 50%, #DDD 50%);
+
+      /* 要减去最后一个视口的高度，不然到最底下，进度条无法到达最右 */
+      background-size: 100% calc(100% - 100vh + 5px); 
+
+      /* 不让背景重复 */
+      background-repeat: no-repeat;
+    }
+    /* 加一个 z-index 小的遮罩，用来遮挡背景，由于小于内容的 z-index，所以不会遮挡内容  */
+    body:before {
+      content: '';
+      position: fixed;
+      top: 5px;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+  <p>这是一篇文章</p>
+</body>
+</html>
