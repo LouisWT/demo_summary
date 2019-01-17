@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>整页滚动</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    #main {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #container {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+    }
+
+    #page1 {
+      background-color: red;
+    }
+
+    #page2 {
+      background-color: blue;
+    }
+
+    #page3 {
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="container">
+      <div id="page1" class="page"></div>
+      <div id="page2" class="page"></div>
+      <div id="page3" class="page"></div>
+    </div>
+  </div>
+  <script>
+    let index = 0;
+    let startTime = Date.now();
+    window.onmousewheel = function (e) {
+      let curr = Date.now(); 
+      if (curr - startTime < 1000) return;
+      startTime = curr;
+      let down = null;
+      if (e.wheelDelta < 0 && index < 2) {
+        down = true;
+      } else if (e.wheelDelta > 0 && index > 0) {
+        down = false;
+      }
+      if (down === null) {
+        return;
+      }
+      mousewheel(down);
+    }
+
+    function mousewheel(down) {
+      if (down) {
+        index += 1;
+      } else {
+        index -= 1;
+      }
+      let container = document.getElementById('container');
+      let height = document.documentElement.clientHeight;
+      let target = height * index;
+      container.style.transform = `translateY(-${target}px)`;
+    }
+  </script>
+</body>
+
+</html>
