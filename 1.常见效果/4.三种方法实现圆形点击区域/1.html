@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>area + map 实现点击区域</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <img src="./P_00.jpg" alt="" style="width: 192px; height:288px;" usemap="#MM">
+  <p>点击图片中央可以看到圆形</p>
+  <map name="MM" id="MM">
+    <area shape="circle" coords="96,144,50" href="#circle" alt="">
+  </map>
+  <div id="circle" style="width: 300px; height: 300px; border-radius: 50%; background-color: red"></div>
+  <p id="circleDis"></p>
+  <div id="cir" style="width: 300px; height: 300px; border-radius: 50%; background-color: red"></div>
+  <p id="cirDis"></p>
+  <script>
+    window.onload = function() {
+      let circle = document.getElementById('circle');
+      let circleDis = document.getElementById('circleDis');
+      circle.onclick = function () {
+        circleDis.innerHTML = 'click!';
+      }
+
+      let cir = document.getElementById('cir');
+      let cirDis = document.getElementById('cirDis');
+      window.onclick = function (e) {
+        let centerTop = cir.offsetTop + cir.offsetHeight / 2;
+        let centerLeft = cir.offsetLeft + cir.offsetWidth / 2;
+        let pointX = e.clientX;
+        let pointY = e.clientY;
+        console.log(centerTop);
+        console.log(pointY);
+        let distance = Math.pow(centerTop - pointY, 2) + Math.pow(centerLeft - pointX, 2);
+        if (distance < 2500) {
+          cirDis.innerHTML = 'click!';;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
