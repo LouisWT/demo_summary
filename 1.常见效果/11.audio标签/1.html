@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .progress {
+      width: 300px;
+      height: 5px;
+      background-color: #000;
+    }
+    .line {
+      width: 50px;
+      height: 5px;
+      background-color: red;
+    }
+    #progress {
+      width: 300px;
+      height: 4px;
+      border-radius: 4px;
+      background-color: #edca13;
+    }
+
+    #currentProgress {
+      width: 0px;
+      height: 4px;
+      border-radius: 4px;
+      background-color: #124f5a;
+    }
+
+    #progressBtn {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #0a6ebd;
+      position: relative;
+      top: -3px;
+      left: 5px;
+      display: block;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <audio id="audio" controls='controls' src="https://qingmooc-v1.oss-cn-qingdao.aliyuncs.com/recordings/88cd2c328d0206c8c1606cfc668bd1a1.mp3">您的浏览器版本过低，不支持本应用，且切换为更高版本的现代浏览器</audio>
+  <button id="play">play</button>
+  <button id="fast">fast</button>
+  <button id="slow">slow</button>
+  <button id="back">back</button>
+  <div id="progress">
+    <div id="currentProgress">
+      <span id="progressBtn"></span>
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      const audio = document.getElementById('audio');
+      let time;
+      let btn = document.getElementById('progressBtn');
+      let current = document.getElementById('currentProgress');
+      let progress = document.getElementById('progress')
+      let tag = false;
+      let ox = 0;
+      let left = 0;
+      let init = left;
+
+      audio.ontimeupdate = function () {
+        left = 300 * audio.currentTime / time;
+        current.style.width = left + 'px';
+      }
+
+      audio.ondurationchange = function () {
+        time = audio.duration;
+      }
+
+      document.addEventListener('mousedown', function (e) {
+        // pageX 是指针相对于整个文档的坐标
+        // pageX - left 是起始点
+        if (time && e.target === btn) {
+          ox = e.pageX;
+          init = left;
+          tag = true;
+        }
+      })
+      document.addEventListener('mousemove', function (e) {
+        if (time && tag) {
+          // 相对移动的距离
+          left = e.pageX - ox + init;
+          if (left <= 0) {
+            left = 0;
+          } else if (left >= 300) {
+            left = 300;
+          }
+          current.style.width = left + 'px';
+          audio.currentTime = left / 300 * time;
+        }
+      })
+      document.addEventListener('mouseup', function(e) {
+        tag = false;
+      });
+      progress.addEventListener('click', (e) => {
+        if (!time && e.target === btn) return;
+        let x = e.offsetX;
+        current.style.width = x + 'px';
+        left = x;
+        audio.currentTime = left / 300 * time;
+      })
+
+      let status = 'pause';
+      const playBtn = document.getElementById('play');
+      playBtn.onclick = function () {
+        if (status === 'pause') {
+          audio.play();
+          status = 'play';
+        } else {
+          audio.pause();
+          status = 'pause';
+        }
+      }
+
+      let fastBtn = document.getElementById('fast');
+      let slowBtn = document.getElementById('slow');
+      let backBtn = document.getElementById('back');
+      fastBtn.onclick = function () {
+        audio.defaultPlaybackRate = 4;
+        audio.playbackRate = 4;
+      }
+      slowBtn.onclick = function () {
+        audio.defaultPlaybackRate = 0.25;
+        audio.playbackRate = 0.25;
+      }
+      // chrome 不支持 playbackRate 为负
+      backBtn.onclick = function () {
+        audio.playbackRate = -0.25;
+      }
+    }
+  </script>
+</body>
+</html>
