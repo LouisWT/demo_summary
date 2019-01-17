@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>八卦图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #ccc;
+    }
+
+    #bigCir {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(to top, #fff, #fff 50%, #000 50%, #000);
+      position: relative;
+      animation: rotateCir 3s linear infinite;
+    }
+
+    @keyframes rotateCir {
+      0% {
+        transform: rotate(0);
+      }
+
+      25% {
+        transform: rotate(90deg);
+      }
+
+      50% {
+        transform: rotate(180deg);
+      }
+
+      75% {
+        transform: rotate(270deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .midCir {
+      width: 50%;
+      height: 50%;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    #midCir1 {
+      background: #fff;
+      top: calc(50% - 50px);
+    }
+
+    #midCir2 {
+      background: #000;
+      left: calc(50%);
+      top: calc(50% - 50px);
+    }
+
+    .smaCir {
+      width: 33.3%;
+      height: 33.3%;
+      border-radius: 50%;
+      position: absolute;
+      top: calc(50% - 16.6%);
+      left: calc(50% - 16.6%);
+    }
+
+    #smaCir1 {
+      background-color: #000;
+    }
+
+    #smaCir2 {
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bigCir">
+    <div id="midCir1" class="midCir">
+      <div id="smaCir1" class="smaCir"></div>
+    </div>
+    <div id="midCir2" class="midCir">
+      <div id="smaCir2" class="smaCir"></div>
+    </div>
+  </div>
+</body>
+
+</html>
