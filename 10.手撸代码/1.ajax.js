@@ -13,5 +13,8 @@ xhr.onreadystatechange = function () {
     }
   }
 }
+xhr.onerror = function (err) {
+  console.log(err);
+}
 xhr.open(method, url, true);
 xhr.send(data);
