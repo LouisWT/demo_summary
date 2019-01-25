@@ -1,5 +1,5 @@
 // 非严格模式下，arguments 的值和对应形参的值保持同步，比如在函数内部修改了 arguments[0] 后，第一个形参也会跟着改变
-// 严格模式下，arguments 和对应形参不同步
+// 严格模式下，arguments 和对应形参不同步，并且不能给 arguments 赋值
 
 var func = function(m, n) {
   arguments[0] = 1;
@@ -21,3 +21,20 @@ func = function(m, n) {
 }
 // 3
 console.log(func(1, 1));
+
+func = function (m, n) {
+  arguments = [];
+  // []
+  console.log(arguments);
+  return m;
+}
+
+// 1
+console.log(func(1));
+
+func = function (m, n) {
+  'use strict';
+  // Unexpected eval or arguments in strict mode
+  arguments = [];
+  return m;
+}

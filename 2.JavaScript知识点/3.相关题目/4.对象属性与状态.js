@@ -56,7 +56,7 @@ console.log(unEnum);
 // [ Symbol(d), Symbol(e) ]
 console.log(Object.getOwnPropertySymbols(obj));
 
-// 1.5 for...in 会获取对象的自有枚举属性 和 原型链属性
+// 1.5 for...in 会获取对象的自有枚举属性 和 原型链可枚举属性
 // b
 // a
 for (let i in obj) {

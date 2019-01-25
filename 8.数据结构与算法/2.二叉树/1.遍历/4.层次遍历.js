@@ -24,7 +24,7 @@ function search(quene) {
 // 递归方法适合实现只打印第 n 层节点
 // 使用 level 来记录当前是第几层
 function levelSearchN(root, n) {
-  if (!root || level < 0) return 0;
+  if (!root || n < 0) return 0;
   searchN(root, n, 0);
 }
 
