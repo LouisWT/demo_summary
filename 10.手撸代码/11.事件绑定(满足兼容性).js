@@ -1,17 +1,50 @@
 // 1. 简单的
-function addEvent(elm, evType, fn, useCapture) {
-  if (elm.addEventListener) {
-    elm.addEventListener(evType, fn, useCapture);//DOM2.0
-    return true;
-  }
-  else if (elm.attachEvent) {
-    var r = elm.attachEvent('on' + evType, fn);//IE5+
-    return r;
-  }
-  else {
-    elm['on' + evType] = fn;//DOM 0
+let EventUtil = {
+  addHandler: function (elm, evType, fn) {
+    if (elm.addEventListener) {
+      // 默认在冒泡阶段处理
+      elm.addEventListener(evType, fn, false);//DOM2.0
+    }
+    else if (elm.attachEvent) {
+      elm.attachEvent('on' + evType, fn);//IE5+
+    }
+    else {
+      elm['on' + evType] = fn;//DOM 0
+    }
+  },
+  removeHandler: function(elm, type, fn) {
+    if (elm.removeEventListener) {
+      elm.removeEventListener(type, fn, false);
+    }
+    else if (elm.detachEvent) {
+      elm.detachEvent('on' + type, fn);
+    }
+    else {
+      elm['on' + type] = null;
+    }
+  },
+  getEvent: function(event) {
+    return event ? event : window.event;
+  },
+  getTarget: function (event) {
+    return event.target || event.srcElement;
+  },
+  preventDefault: function (event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    } else {
+      event.returnValue = false;
+    }
+  },
+  stopPropagation: function (event) {
+    if (event.stopPropagation) {
+      event.stopPropagation();
+    } else {
+      this.cancelBubble = true;
+    }
   }
 }
+
 
 // 2.进阶
 function addEvent(element, type, handler) {
