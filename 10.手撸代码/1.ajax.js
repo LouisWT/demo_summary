@@ -11,8 +11,10 @@ xhr.onreadystatechange = function () {
     if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
       console.log(xhr.response);
     }
+     
   }
 }
+
 xhr.onerror = function (err) {
   console.log(err);
 }

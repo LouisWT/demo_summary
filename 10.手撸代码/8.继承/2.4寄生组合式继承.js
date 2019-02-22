@@ -39,3 +39,7 @@ console.log(c1 instanceof Object)
 console.log(c1 instanceof Parent)
 // true
 console.log(c1 instanceof Child)
+
+c1.say = undefined;
+console.log(c1.say)
+console.log(c2.say)

@@ -89,9 +89,7 @@ function cloneForce(source) {
   const uniqueList = [];
 
   while(loopList.length > 0) {
-    const node = loopList.pop();
-    const parent = node.parent;
-    const data = node.data;
+    const {parent, data} = loopList.pop();
 
     for (let k in data) {
       if (data.hasOwnProperty(k)) {

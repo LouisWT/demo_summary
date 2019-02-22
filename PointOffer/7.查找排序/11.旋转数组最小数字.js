@@ -29,16 +29,6 @@ function findMin(arr) {
         // 二分查找
         indexMid = Math.floor((index2 + index1) / 2);
 
-        // 如果三个值都一样，那不能确定中间值是在前一数组还是后一数组，所以退化为顺序查找
-        if (arr[index1] == arr[indexMid] && arr[indexMid] == arr[index2]) {
-            for (let i = index1; i < index2; i++) {
-                if (arr[i] < arr[indexMid]) {
-                    indexMid = i;
-                }
-            }
-            break;
-        }
-
         // 如果中间的数大于等于起始的数，那么它属于第一个数组，更新 index1
         if (arr[index1] <= arr[indexMid]) {
             index1 = indexMid;

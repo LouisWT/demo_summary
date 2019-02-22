@@ -1,18 +1,16 @@
-function currying(fn) {
-  let args = [].slice.call(arguments, 1);
+function currying(fn, ...args) {
   return fn.bind(null, args);
 }
 
-function currying(fn) {
-  let args = [].slice.call(arguments, 1);
+function curry(fn, ...args) {
   return function() {
-    var _args = args.concat([].slice.call(arguments));
-    return fn.apply(null, _args);
+    let innerArgs = Array.prototype.slice(arguments)
+    fn.apply(null, args.concat(innerArgs))
   }
 }
 
 function sum(a, b) {
-  console.log(a + b);
+  console.log(Number(a) + Number(b));
 }
 
 currying(sum, 1)(2);

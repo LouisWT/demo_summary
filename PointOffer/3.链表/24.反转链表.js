@@ -56,21 +56,22 @@ function ReverseList(pHead) {
 }
 
 function ReverseList(pHead) {
-    if (!pHead) return;
-    let newHead = null;
+    if (!pHead) return null;
     let prev = null;
-    let node = pHead;
-    while (node) {
-        const nextNode = node.next;
-        if (!nextNode) newHead = node;
-        node.next = prev;
-        prev = node;
-        node = nextNode;
+    let curr = pHead;
+    let next = pHead.next;
+    while (next) {
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+        next = curr.next;
     }
-    return newHead;
+    // 执行最后一步连接
+    curr.next = prev;
+    return curr;
 }
 
-ReverseList(linkList);
+console.log(ReverseList(linkList));
 
 module.exports = {
     ReverseList: ReverseList

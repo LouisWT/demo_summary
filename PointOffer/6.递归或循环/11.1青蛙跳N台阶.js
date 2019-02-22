@@ -14,5 +14,5 @@ function accessN(n) {
     }
     return Math.pow(2, n - 1);
 }
-
+ 
 console.log(accessN(4));

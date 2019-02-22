@@ -1,3 +1,7 @@
+// n 指背包的容量
+// m 指商品的数量
+// w 指商品的重量数组
+// v 指商品的价值数组
 function bagMax(n, w, v) {
   if (!n || n <= 0 || !w || !v) return 0;
   let max = [];
@@ -14,6 +18,7 @@ function bagMax(n, w, v) {
         continue;
       }
       max[i][j] = max[i - 1][j];
+      // 第 i 件商品就是 w v 数组的第 i - 1 个元素
       if (j >= w[i - 1]) {
         let putValue = max[i - 1][j - w[i - 1]] + v[i - 1];
         let notPutValue = max[i - 1][j];

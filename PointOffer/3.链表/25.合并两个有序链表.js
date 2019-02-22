@@ -26,3 +26,17 @@ function Merge(pHead1, pHead2) {
     newRoot = pHead1.val <= pHead2.val ? pHead1 : pHead2;
     return newRoot;
 }
+
+function merge(h1, h2) {
+    if (!h1) return h2;
+    if (!h2) return h1;
+    let node = null;
+    if (h1.val <= h2.val) {
+        node = h1;
+        node.next = merge(h1.next, h2);
+    } else {
+        node = h2;
+        node.next = merge(h1, h2.next);
+    }
+    return node;
+} 

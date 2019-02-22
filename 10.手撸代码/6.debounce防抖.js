@@ -9,11 +9,9 @@ function debounce(fn, delay) {
   // 使用闭包保存这个函数的定时器
   let timer = null;
 
-  return function() {
+  return function(...args) {
     // 保存调用上下文
     let context = this;
-    // 保存参数
-    let args = arguments;
 
     // 将之前的 timer 清除
     clearTimeout(timer);

@@ -30,6 +30,7 @@ function findKNode(pHead, count) {
     let behind = pHead;
     // 找到倒数第 count 个节点
     // ** 这个条件也很重要, 不然如果不能相遇就会死循环
+    // 先走 k-1 步
     for (let i = 0; i < count; i++) {
         first = first.next;
     }

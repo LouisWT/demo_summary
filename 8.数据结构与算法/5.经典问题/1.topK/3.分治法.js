@@ -2,10 +2,7 @@ function topK(arr, k) {
   if (!arr || k <= 0 || k > arr.length) return [];
   if (k == arr.length) return arr.sort();
   find(arr, 0, arr.length - 1, k);
-  let res = [];
-  for(let i = 0; i < k; i++) {
-    res[i] = arr[i];
-  }
+  let res = arr.slice(0, k);
   return res.sort();
 }
 
@@ -26,8 +23,8 @@ function partition(arr, lo, hi) {
   let i = lo;
   let j = hi + 1;
   while (true) {
-    while (arr[++i] > val) { if (i == hi) break; }
-    while (arr[--j] < val) { if (j == lo) break; }
+    while (arr[++i] >= val) { if (i == hi) break; }
+    while (arr[--j] <= val) { if (j == lo) break; }
     if (i >= j) break;
     swap(arr, i, j);
   }

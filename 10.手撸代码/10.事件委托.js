@@ -6,8 +6,8 @@
 </ol>
 
 // 将 li 的事件委托到 ol元素
-var $ = function () {
-  return document.getElementById('id');
+var $ = function (id) {
+  return document.getElementById(id);
 }
 
 $('vid').onclick = function (e) {

@@ -5,8 +5,16 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+let count = 0;
+let lines = [];
 rl.on('line', function (line) {
-  // do whatever
-  var tokens = line.split(' ');
-  console.log(parseInt(tokens[0]) + parseInt(tokens[1]));
+  // 读取多行
+  lines.push(line);
+  count++;
+  // 2指的是读取的行数
+  if (count === 2) {
+    // 调用函数
+    // do(lines)
+    console.log(lines);
+  }
 });
