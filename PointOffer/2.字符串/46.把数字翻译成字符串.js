@@ -6,6 +6,7 @@ function getTranslationCount(number) {
   return translationCount(number.toString());
 }
 
+// 从第i 位开始的不同翻译的数目
 // f(i) = f(i + 1) + g(i, i + 1) * f(i + 2)
 function translationCount(numStr) {
   let counts = new Array(numStr.length);
@@ -33,6 +34,19 @@ function translationCount(numStr) {
     counts[i] = count;
   }
   return counts[0];
+}
+
+function translate(str, i = 0) {
+  if (!str || i >= str.length) return 0;
+  let num1 = translate(str, i + 1);
+  let num2 = 0;
+  if (i + 1 < str.length) {
+    let num = parseInt(str[i] + str[i+1]);
+    if (num >= 0 && num <= 25) {
+      num2 = translate(str, i + 2);
+    }
+  }
+  return num1 + num2;
 }
 
 console.log(getTranslationCount(12258));

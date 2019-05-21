@@ -47,4 +47,4 @@ function count1(arr) {
 // console.log(count1OfN(12));
 // console.log(count1OfN(55));
 // console.log(count1OfN(10000));
-console.log(count1OfN(21345));
+console.log(count1(21345));

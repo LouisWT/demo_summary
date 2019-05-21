@@ -1,3 +1,5 @@
+// 堆是近似完全二叉树的结构
+// 每个节点小于它的子节点
 function heapSort(arr) {
   if (!arr) return null;
   let N = arr.length;
@@ -12,6 +14,7 @@ function heapSort(arr) {
 }
 
 function sink(arr, k, N) {
+  // 很关键
   while (2 * k <= N) {
     let left = 2 * k;
     let right = 2 * k + 1;

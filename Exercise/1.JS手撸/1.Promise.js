@@ -64,6 +64,7 @@ Promise.prototype.then = function (rs, rj) {
           if (x instanceof Promise) {
             return x.then(resolve, reject);
           }
+          resolve(x)
         } catch(err) {
           reject(err);
         }
@@ -95,6 +96,7 @@ Promise.prototype.then = function (rs, rj) {
           if (x instanceof Promise) {
             return x.then(resolve, reject);
           }
+          resolve(x);
         } catch(err) {
           reject(err);
         }

@@ -3,9 +3,8 @@ function currying(fn, ...args) {
 }
 
 function curry(fn, ...args) {
-  return function() {
-    let innerArgs = Array.prototype.slice(arguments)
-    fn.apply(null, args.concat(innerArgs))
+  return function(...innerArgs) {
+    fn.apply(this, args.concat(innerArgs))
   }
 }
 

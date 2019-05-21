@@ -5,11 +5,16 @@
 function calN(N) {
   if (N < 0) return -1;
   let sum = N;
+  // 表示当前区间的第一个数
   let start = 0;
+  // 表示当前区间的最后一个数
   let end = 9;
+  // 表示当前区间的数是几位的 
   let count = 1;
   while(true) {
+    // 当前区间有多少个数
     const num = end - start + 1;
+    // 减去当前区间所有数字的位数
     sum = sum - count * num;
     // 如果大于 0 说明还在下一个区间
     if (sum > 0) {

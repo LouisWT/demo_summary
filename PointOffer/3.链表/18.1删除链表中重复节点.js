@@ -29,18 +29,16 @@ let root = {
 
 function deleteDupNode(root) {
   if(!root) return;
-  let currentNode = root;
+  let curr = root;
   // 当最后一个节点是重复节点, currentNode 最后是 null
-  while (currentNode && currentNode.next) {
-    let nextNode = currentNode.next;
+  while (curr && curr.next) {
+    let next = curr.next;
     // 当最后一个节点是重复节点， nextNode 最后为 null
-    while(nextNode && nextNode.value == currentNode.value) {
-      nextNode = nextNode.next;
+    while(next && next.value == curr.value) {
+      next = next.next;
     }
-    if (nextNode !== currentNode.next) {
-      currentNode.next = nextNode;
-    }
-    currentNode = currentNode.next;
+    curr.next = nextNode;
+    curr = curr.next;
   }
 }
 

@@ -7,9 +7,7 @@ function getProbability(n) {
   let end = 6 * n;
   let length = end - start + 1;
   const sum = new Array(length);
-  for (let i = 0; i < sum.length; i++) {
-    sum[i] = 0;
-  }
+  sum.fill(0);
   // 确定第一个骰子的值
   for (let i = 1; i <= 6; i++) {
     probability(n, 1, i, sum);

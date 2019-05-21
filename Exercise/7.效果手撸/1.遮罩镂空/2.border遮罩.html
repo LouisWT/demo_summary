@@ -1,0 +1,45 @@
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .content {
+      width: 500px;
+      height: 500px;
+      background-color: red;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      opacity: 1;
+    }
+  </style>
+  <div class="content">
+    <div id="mask"></div>
+  </div>
+
+  <script>
+    let mask;
+    let content;
+    window.onload = function () {
+      mask = document.getElementById('mask');
+      content = document.getElementsByClassName('content')[0];
+    }
+    document.documentElement.addEventListener('mousedown', function (event) {
+      let { x, y, width, height, right, bottom } = content.getBoundingClientRect();
+      // 遮罩宽度是 100
+      let posX = event.clientX + 100 > right ? right - 100 : event.clientX - x;
+      let posY = event.clientY + 100 > bottom ? bottom - 100 : event.clientY - y;
+      mask.style.borderLeft = `${posX}px solid rgba(0, 0, 0, .4)`;
+      mask.style.borderTop = `${posY}px solid rgba(0, 0, 0, .4)`;
+      mask.style.borderRight = `2000px solid rgba(0, 0, 0, .4)`;
+      mask.style.borderBottom = `2000px solid rgba(0, 0, 0, .4)`;
+    })
+  </script>

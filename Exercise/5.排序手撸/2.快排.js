@@ -1,3 +1,5 @@
+// 先用第一个元素，将数组分割为两个部分，一边比它小，一边比它大
+// 然后对这两个部分再递归分割，直到最后有序
 function quickSort(arr) {
   if (!arr) return null;
   sort(arr, 0, arr.length - 1)

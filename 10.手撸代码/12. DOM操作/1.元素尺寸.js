@@ -4,7 +4,7 @@ function getElementLeft(element) {
   // 定位父元素
   let current = element.offsetParent;
   while (current != null) {
-    actualLeft = current.offsetLeft;
+    actualLeft += current.offsetLeft;
     current = current.offsetParent;
   }
   return actualLeft;
@@ -15,7 +15,7 @@ function getElementTop(element) {
   // 定位父元素
   let current = element.offsetParent;
   while (current != null) {
-    actualTop = current.offsetTop;
+    actualTop += current.offsetTop;
     current = current.offsetParent;
   }
   return actualTop;
@@ -62,3 +62,25 @@ function getBoundingClientRect(element) {
     bottom: actualTop + offsetHeight - scrollTop
   }
 }
+
+function getElementTop(element) {
+  let actualTop = element.offsetTop;
+  // 定位父元素
+  let current = element.offsetParent;
+  while (current != null) {
+    actualTop += current.offsetTop;
+    current = current.offsetParent;
+  }
+  return actualTop;
+}
+function a(e) {
+  let ele = e;
+  return function() {
+    if (document.documentElement.scrollTop > getElementTop(ele)) { 
+      ele.style.position = 'fixed';
+      ele.style.top = '0'; 
+    } else {
+      ele.style.position = 'static';
+    }
+  }
+} 

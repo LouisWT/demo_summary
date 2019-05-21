@@ -17,7 +17,8 @@ const dataUrl = {
 
 window.onload = function() {
   waterfall('main', 'box');
-  window.onscroll = handleOnScroll;
+  let fn = throttle(handleOnScroll, 300);
+  window.onscroll = fn;
 }
 
 function waterfall(parentId, boxClass) {
@@ -69,8 +70,9 @@ function checkScrollSlide() {
   // document.documentElement === document.getElementsByTagname('html')[0]
   const scrollTop = document.body.scrollTop || document.documentElement.scrollTop; 
   const height = document.body.clientHeight || document.documentElement.clientHeight
+  const totalHeight = document.documentElement.scrollHeight;
 
-  if (lastBoxHeight < scrollTop + height) {
+  if (totalHeight < scrollTop + height + 100) {
     return true;
   }
   return false;
@@ -93,5 +95,24 @@ function handleOnScroll() {
     }
 
     waterfall('main', 'box')
+  }
+}
+
+function throttle(fn, threshhold = 250) {
+  let timer;
+  let last = null;
+  return function (...args) {
+    let self = this;
+    let remain = last ? threshhold - (Date.now() - last) : 0;
+    clearTimeout(timer);
+    if (remain > 0) {
+      timer = setTimeout(function () {
+        last = Date.now();
+        fn.apply(self, args);
+      }, remain)
+    } else {
+      last = Date.now();
+      fn.apply(self, args);
+    }
   }
 }

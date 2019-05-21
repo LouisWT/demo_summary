@@ -1,0 +1,39 @@
+<style>
+  .content {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: red;
+    overflow: hidden;
+  }
+
+  #mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    box-shadow: 0 0 0 2000px rgba(0, 0, 0, .6);
+  }
+</style>
+
+<div class="content">
+  <div id="mask"></div>
+</div>
+<script>
+  let mask;
+  let content;
+  window.onload = function () {
+    mask = document.getElementById('mask');
+    content = document.getElementsByClassName('content')[0];
+  }
+  document.documentElement.addEventListener('mousedown', function (event) {
+    let { right, bottom } = content.getBoundingClientRect();
+    let { width, height } = mask.getBoundingClientRect();
+    let posX = event.clientX + width <= right ? event.clientX : right - width;
+    let posY = event.clientY + height <= bottom ? event.clientY : bottom - height;
+    mask.style.left = posX + 'px';
+    mask.style.top = posY + 'px';
+  })
+</script>

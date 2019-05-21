@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+var targetNode = document.getElementById('list');
+
+var config = { 
+  // 监听属性值变更
+  attributes: true, 
+  // 监听目标节点添加和删除子节点
+  childList: true, 
+  // 扩展监视范围到目标节点下的整个子树的所有节点
+  subtree: true
+};
+
+var callback = function (mutationsList) {
+  for (var mutation of mutationsList) {
+    console.dir(mutation);
+    if (mutation.type == 'childList') {
+      console.log('A child node has been added or removed.');
+    }
+    else if (mutation.type == 'attributes') {
+      console.log('The ' + mutation.attributeName + ' attribute was modified.');
+    }
+  }
+};
+
+// 将回调传入构造函数
+var observer = new MutationObserver(callback);
+
+// 开始监听
+observer.observe(targetNode, config);
+
+  </script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 
 // calMax(n) = calMax(i) + calMax(n - i)
 function calMax(n) {
-  if (n < 2) {
+  if (n <= 1) {
     return 0;
   }
   if (n == 2) {

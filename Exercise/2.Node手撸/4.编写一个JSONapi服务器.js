@@ -13,7 +13,7 @@ let server = http.createServer((req, res) => {
   let reqUrl = req.url;
   let obj = url.parse(reqUrl, true);
   let { pathname, query } = obj;
-  if (pathname === '/api/parsetime') {
+  if (pathname === /^\/api\/parsetime/) {
     let date = new Date(query.iso);
     let body = {
       hour: date.getHours(),
